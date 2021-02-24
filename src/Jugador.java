@@ -2,10 +2,11 @@ import java.util.Arrays;
 
 public class Jugador {
 	String nombre, nickname;
-	int edad, oro, gemas;
+	int edad, gemas;
+	double oro;
 	Vehiculo[] vehiculos;
 	
-	public Jugador(String nombre, String nickname, int edad, int oro, int gemas, Vehiculo[] vehiculos) {
+	public Jugador(String nombre, String nickname, int edad, double oro, int gemas, Vehiculo[] vehiculos) {
 		this.nombre = nombre;
 		this.nickname = nickname;
 		this.edad = edad;
@@ -38,11 +39,11 @@ public class Jugador {
 		this.edad = edad;
 	}
 
-	public int getOro() {
+	public double getOro() {
 		return oro;
 	}
 
-	public void setOro(int oro) {
+	public void setOro(double oro) {
 		this.oro = oro;
 	}
 

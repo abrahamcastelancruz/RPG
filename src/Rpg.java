@@ -4,32 +4,44 @@ public class Rpg {
 	static Scanner entrada = new Scanner(System.in);
 	
 	public static void main(String[] args) {
-		//System.out.println(saludo());
 		if(saludo()) {
+			int opcion;
 			String nombre = obtenerNombre();
-			//System.out.println(nombre);
 			String nickname = obtenerNickname();
-			//System.out.println(nickname);
 			int edad = obtenerEdad();
-			//System.out.println(nombre +" "+nickname+" "+edad);*/
 			Vehiculo vehiculos[] = new Vehiculo[5];
-			/*for (int i = 0; i < vehiculos.length; i++) {
-				System.out.println(vehiculos[i].toString());
-			}*/
 			vehiculos[0] = vehiculoInicial();
 			Jugador player = new Jugador(nombre, nickname, edad, 50, 30, vehiculos);
-			System.out.println(player.toString());
-			//System.out.println(vehiculoInicial());
-			/*System.out.println(
-					"Galones :"+data.galonesRandom()+
-					"\nColor :"+data.colorRandom()+
-					"\nNeumaticos:"+data.neumaticosRandom()+
-					"\nPotencia :"+data.potenciasRandom());*/
-			
-			/*System.out.println(iniciales[0].getColor());
-			iniciales[0].setColor("Oro");
-			System.out.println(iniciales[0].getColor());*/
-			
+			do {
+				opcion = menu(player);
+				switch (opcion) {
+					case 1:
+						System.out.println("Competir");
+						break;
+					
+					case 2:
+						Ruleta ruleta = new Ruleta(player);
+						ruleta.minijuego();
+						break;
+					
+					case 3:
+						Garage garage = new Garage(player);
+						garage.menuGarage();
+						break;
+						
+					case 4:
+						System.out.println("Pistas");
+						break;
+					
+					case 5:
+						System.out.println("Estats");
+						break;
+					
+					case 6:
+						System.out.println("Adios");
+						break;
+				}
+			}while(opcion != 6);
 		}
 	}
 	
@@ -75,19 +87,36 @@ public class Rpg {
 		return edad;
 	}
 	
-	public static Vehiculo vehiculoInicial() {
+	public static int menu(Jugador player) {
+		int op;
+		do {
+			System.out.println("-------- Menu ---------");
+			System.out.println("Nickname : "+player.getNickname()+"\t\tOro : "+player.getOro()+"\t\tGemas : "+player.getGemas());
+			System.out.println("Selecciona una opción");
+			System.out.println("1.- Competir");
+			System.out.println("2.- Ruleta");
+			System.out.println("3.- Garage");
+			System.out.println("4.- Pistas");
+			System.out.println("5.- Estadísticas y Reportes");
+			System.out.println("6.- Salir");
+			op = entrada.nextInt();
+		}while(op < 1 || op >6);
+		return op;
+	}
+	
+ 	public static Vehiculo vehiculoInicial() {
 		Database data = new Database();
 		Vehiculo iniciales[] = new Vehiculo[3];
 		int numeroVehiculo;
 		
 		for (int i = 0; i < iniciales.length; i++) {
 			iniciales[i] = new Vehiculo(data.galonesRandom(), data.potenciasRandom(), data.neumaticosRandom(), data.colorRandom());
-			//System.out.println(iniciales[i].toString());
 		}
 		
 		do {
 			System.out.println("Selecciona un vehiculo Inicial");
 			for (int i = 0; i < iniciales.length; i++) {
+				iniciales[i].mostrarVehiculo();
 				System.out.println(i+1+".-\nCantidad de galones iniciales : "+iniciales[i].getGasolina()
 						+"\nTipo de neumáticos : "+iniciales[i].getNeumaticos()
 						+"\nTipo de potencia : "+iniciales[i].getPotencia()
@@ -95,7 +124,6 @@ public class Rpg {
 			}
 			numeroVehiculo = entrada.nextInt();
 		}while(numeroVehiculo < 1 || numeroVehiculo > 3);
-		//System.out.println(iniciales[numeroVehiculo-1]);
 		return iniciales[numeroVehiculo-1];
 	}
 }
