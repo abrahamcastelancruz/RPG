@@ -35,7 +35,8 @@ public class Rpg {
 						break;
 					
 					case 5:
-						System.out.println("Estats");
+						Estadisticas estadisticas = new Estadisticas(player);
+						estadisticas.estadisticasCarrera();
 						break;
 					
 					case 6:

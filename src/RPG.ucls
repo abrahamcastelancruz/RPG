@@ -74,7 +74,7 @@
   </class>  
   <class id="9" language="java" name="Vehiculo" project="Rpg" file="/Rpg/src/Vehiculo.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="820" y="1051"/>    
+    <position height="-1" width="-1" x="467" y="802"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      

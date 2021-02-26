@@ -42,17 +42,29 @@ public class Competir {
 					System.out.println((i+1)+".- Lugar\nNombre : "+competidores[i].getJugador().getNombre()
 							+"\nCasillas avanzadas : "+competidores[i].getCasillas());				
 				}
+				
+				if(competidores[0].getJugador().getNombre().equals(this.jugador.getNombre())) {
+					System.out.println("¡Felicidaes Ganaste!");
+					int potencia = potencia(this.jugador.getVehiculo().getPotencia());
+					int gemasGanadas = potencia+random.nextInt(9)+pista.coeficiente;
+					this.jugador.setGemas(this.jugador.getGemas()+gemasGanadas);
+					this.jugador.setOro(this.jugador.getOro()+gemasGanadas);
+					CarreraGanada carreraGanada = new CarreraGanada(competidores, pista);
+					this.jugador.setCarreraGanada(carreraGanada);
+				}
+				
 				do {
 					System.out.println("¿Desea una revancha?");
 					System.out.println("1.- Si\n2.- No");
 					op = entrada.nextInt();
 					revancha = (op ==1) ? true : false;	
 				}while(op < 1 || op > 2);
-				for (int i = 0; i < competidores.length; i++) {
-					competidores[i].setCasillas(0);
-					competidores[i].getVehiculo().setGasolina(pista.getCasillas());
+				if(op ==1 ) {
+					for (int i = 0; i < competidores.length; i++) {
+						competidores[i].setCasillas(0);
+						competidores[i].getVehiculo().setGasolina(pista.getCasillas());
+					}
 				}
-				System.out.println(revancha);
 			}while(revancha);
 		}
 	}

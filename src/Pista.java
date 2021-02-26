@@ -2,6 +2,7 @@
 public class Pista {
 	int casillas;
 	int coeficiente;
+	String Nombre;
 	
 	public int getCasillas() {
 		return casillas;
@@ -18,4 +19,14 @@ public class Pista {
 	public void setCoeficiente(int coeficiente) {
 		this.coeficiente = coeficiente;
 	}
+
+	public String getNombre() {
+		return Nombre;
+	}
+
+	public void setNombre(String nombre) {
+		Nombre = nombre;
+	}
+	
+	
 }

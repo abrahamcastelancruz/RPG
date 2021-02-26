@@ -6,6 +6,7 @@ public class Jugador {
 	double oro;
 	Vehiculo[] vehiculos;
 	Vehiculo vehiculo;
+	CarreraGanada carreraGanada;
 	
 	public Jugador(String nombre, String nickname, int edad, double oro, int gemas, Vehiculo[] vehiculos) {
 		this.nombre = nombre;
@@ -75,6 +76,14 @@ public class Jugador {
 
 	public void setVehiculo(Vehiculo vehiculo) {
 		this.vehiculo = vehiculo;
+	}
+
+	public CarreraGanada getCarreraGanada() {
+		return carreraGanada;
+	}
+
+	public void setCarreraGanada(CarreraGanada carreraGanada) {
+		this.carreraGanada = carreraGanada;
 	}
 
 	@Override
