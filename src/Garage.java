@@ -23,7 +23,6 @@ public class Garage {
 				llenarTanque(vehiculoActual);
 				break;
 
-				
 			case 3:
 				mejoraNeumaticos(vehiculoActual);
 				break;	
@@ -38,14 +37,63 @@ public class Garage {
 
 				
 			case 6:
-				System.out.println("comprar vehiculo");
+				comprarVehiculo();
 				break;	
 				
 			case 7:
-				System.out.println("Cambiar vehiculo");
+				seleccionarVehiculo();
 				break;	
 			}
 		}while(op != 8);
+	}
+	
+	public void comprarVehiculo() {
+		if(vehiculosReales() < 5) {
+			Vehiculo[] vehiculosCompra = new Vehiculo[6];
+			int vehiculoComprado;
+			for (int i = 0; i < vehiculosCompra.length; i++) {
+				vehiculosCompra[i] = new Vehiculo(database.galonesRandom(), database.potenciasRandom(), database.neumaticosRandom(), database.colorRandom());				
+			}
+			
+			do {
+				System.out.println("Selecciona un vehículo");
+				for (int i = 0; i < vehiculosCompra.length; i++) {
+					vehiculosCompra[i].mostrarVehiculo();
+					System.out.println((i+1)+".-\nGasolina : "+vehiculosCompra[i].getGasolina()
+							+"\n Potencia : "+vehiculosCompra[i].getPotencia()
+							+"\n Neumáticos : "+vehiculosCompra[i].getNeumaticos()
+							+"\n Color : "+vehiculosCompra[i].getColor());
+				}
+				vehiculoComprado = entrada.nextInt();
+			}while(vehiculoComprado < 1 || vehiculoComprado > 6);
+			
+			int gemas = this.jugador.getGemas();
+			
+			if(gemas >= 10) {
+				for (int i = 0; i < this.jugador.vehiculos.length; i++) {
+					if(this.jugador.vehiculos[i] == null) {
+						this.jugador.vehiculos[i] = vehiculosCompra[vehiculoComprado-1];
+						break;
+					}
+				}
+				System.out.println("Vehículo comprado");
+				this.jugador.setGemas(this.jugador.getGemas()-10);
+			}else {
+				System.out.println("No cuentas con suficientes gemas");
+			}
+		}else {
+			System.out.println("No puede comprar más vehículos");
+		}
+	}
+	
+	public int vehiculosReales() {
+		int cantidad = 0;
+		for (int i = 0; i < this.jugador.vehiculos.length; i++) {
+			if(this.jugador.vehiculos[i] != null) {
+				cantidad++;
+			}
+		}
+		return cantidad;
 	}
 	
 	public void llenarTanque(Vehiculo vehiculo) {

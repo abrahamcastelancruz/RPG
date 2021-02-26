@@ -5,6 +5,7 @@ public class Jugador {
 	int edad, gemas;
 	double oro;
 	Vehiculo[] vehiculos;
+	Vehiculo vehiculo;
 	
 	public Jugador(String nombre, String nickname, int edad, double oro, int gemas, Vehiculo[] vehiculos) {
 		this.nombre = nombre;
@@ -13,6 +14,11 @@ public class Jugador {
 		this.oro = oro;
 		this.gemas = gemas;
 		this.vehiculos = vehiculos;
+	}
+	
+	public Jugador(String nombre, Vehiculo vehiculo) {
+		this.nombre = nombre;
+		this.vehiculo = vehiculo;
 	}
 
 	public String getNombre() {
@@ -62,10 +68,20 @@ public class Jugador {
 	public void setVehiculos(Vehiculo[] vehiculos) {
 		this.vehiculos = vehiculos;
 	}
+	
+	public Vehiculo getVehiculo() {
+		return vehiculo;
+	}
+
+	public void setVehiculo(Vehiculo vehiculo) {
+		this.vehiculo = vehiculo;
+	}
 
 	@Override
 	public String toString() {
-		return "Jugador [nombre=" + nombre + ", nickname=" + nickname + ", edad=" + edad + ", oro=" + oro + ", gemas="
-				+ gemas + ", vehiculos=" + Arrays.toString(vehiculos) + "]";
+		return "Jugador [nombre=" + nombre + ", nickname=" + nickname + ", edad=" + edad + ", gemas=" + gemas + ", oro="
+				+ oro + ", vehiculos=" + Arrays.toString(vehiculos) + ", vehiculo=" + vehiculo + "]";
 	}
+
+	
 }

@@ -5,6 +5,4 @@ public class Arena extends Pista{
 		this.casillas = 90;
 		this.coeficiente = 2;
 	}
-	
-	
 }

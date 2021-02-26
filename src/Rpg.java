@@ -16,7 +16,8 @@ public class Rpg {
 				opcion = menu(player);
 				switch (opcion) {
 					case 1:
-						System.out.println("Competir");
+						Competir competir = new Competir(player);
+						competir.carrera();
 						break;
 					
 					case 2:

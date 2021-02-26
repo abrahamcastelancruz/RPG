@@ -5,6 +5,4 @@ public class Concreto extends Pista{
 		this.casillas = 100;
 		this.coeficiente = 6;
 	}
-	
-	
 }

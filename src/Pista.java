@@ -18,6 +18,4 @@ public class Pista {
 	public void setCoeficiente(int coeficiente) {
 		this.coeficiente = coeficiente;
 	}
-	
-	
 }
